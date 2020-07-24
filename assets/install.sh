@@ -29,6 +29,10 @@ chmod +x /opt/postfix.sh
 postconf -e myhostname=$maildomain
 postconf -F '*/*/chroot = n'
 
+if [ "${relayhost}" != "" ]; then
+	postconf -e relayhost=${relayhost}
+fi
+
 ############
 # SASL SUPPORT FOR CLIENTS
 # The following options set parameters needed by Postfix to enable
